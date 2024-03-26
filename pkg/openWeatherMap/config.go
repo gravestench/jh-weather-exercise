@@ -37,7 +37,7 @@ func (s *Service) IngestConfigData(handle *configManager.ConfigHandle) error {
 	}
 
 	if s.Config.ApiKey == "" {
-		return fmt.Errorf("you need to set up your API key in config file %q", handle.FilePath())
+		return fmt.Errorf("you need to set up your API key in config file %q, please see https://openweathermap.org/faq", handle.FilePath())
 	}
 
 	return nil
