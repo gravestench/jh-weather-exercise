@@ -71,4 +71,12 @@ There's also an api route defined by the config manager:
 * `http://localhost:8080/config/paths`
 
 This was just added to show how easily it is to add other services to the API of our example app. 
-This route just prints the filepaths of the config files. 
+This route just prints the filepaths of the config files. The response json looks like this:
+```json
+{
+    "Paths": [
+        "C:\\Users\\dknuth\\jh_weather_exercise\\web_server.json",
+        "C:\\Users\\dknuth\\jh_weather_exercise\\open_weather_map.json"
+    ]
+}
+```
