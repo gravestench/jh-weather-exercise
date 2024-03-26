@@ -28,13 +28,13 @@ There are three "services" that make up the application:
 * **Open Weather Map API** - Exposes api endpoints that internally use the underlying Open Weather Map API.
 
 These three services are all set uptogether in the `main` func of the 
-application in `cmd/server/main.go`. 
+application in `cmd/example-app/main.go`. 
 
 ## Running the Example Application
 
 You can run the application by executing this command:
 ```bash
-go run github.com/gravestench/jh-weather-exercise/cmd/server@main
+go run github.com/gravestench/jh-weather-exercise/cmd/example-app@main
 ```
 
 The first time the application runs, it should create a subdirectory in the current user's 
