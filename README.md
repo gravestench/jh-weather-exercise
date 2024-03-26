@@ -61,7 +61,9 @@ Once the app is running, you can use a tool like Postman to test the endpoints.
 
 The output of the `weather/current/describe` endpoint yields a response like this:
 ```text
-"It's cool, feels colder than it actually is, and dry, with clear skies."
+{
+    "Description": "It's cool, feels colder than it actually is, and dry, with clear skies."
+}
 ```
 
 ## Bonus

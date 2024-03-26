@@ -60,5 +60,9 @@ func (s *Service) handleDescribeCurrentWeather(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, DescribeWeather(*res))
+	type payload struct {
+		Description string
+	}
+
+	c.JSON(http.StatusOK, payload{Description: DescribeWeather(*res)})
 }
