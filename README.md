@@ -16,19 +16,43 @@ the API.
 with the team. Additionally, please don’t add your API Key to the project. Each member of the
 team reviewing your code has their own key to use for testing your project.
 
-## My Implementation
+## Implementation
 The code I've written for this exercise uses the "standard"
 Golang project structure. Stuff that I treat like library 
 components are put inside of `pkg`, and applications each
 have a subdir inside of `cmd`.
 
 There are three "services" that make up the application:
-* **Config File Manager** - Initializes configs in a standard way, but doesn't know anything about the actual config files. The file defaults and ingestion is done by other delegate services which integrate with this one by implementing an integration interface.
-* **Web Server/Router** - A combined HTTP web server and a gin web router. Other services integrate with this one by implementing an interface that allows them to be delegates for initializing their API routes.
-* **Open Weather Map API** - Exposes api endpoints that internally use the underlying Open Weather Map API.
+- **Config File Manager Service**: Handles configurations via an integration interface without direct file knowledge.
+- **Web Server/Router Service**: Integrates an HTTP server with a gin web router, allowing route initialization through an interface.
+- **Weather Service**: Utilizes the OpenWeather API to provide weather conditions via endpoints.
 
-These three services are all set uptogether in the `main` func of the 
-application in `cmd/example-app/main.go`. 
+## Design Philosophy
+The architecture of the project is built on the principles of modularity, testability, 
+and clear division of responsibilities, making it straightforward to incorporate 
+additional services. 
+
+Key to my approach is the emphasis on these aspects:
+
+1) **Config Service Flexibility**: This service empowers other components to 
+manage their configuration data independently, supporting various data formats 
+like JSON, YAML, or XML. This flexibility ensures the config manager needs only to 
+know the file names for data access, making any format change seamless.
+
+2) **Web Server and Router Integration**: This core component works closely with the 
+config service, allowing other services to define their API routes through an 
+integration interface. **A significant advantage of this method is avoiding 
+the monolithic "god-file" approach for route initialization, which can lead to 
+maintenance challenges.**
+
+3) **Weather Service Integration**: By maintaining a clear boundary of responsibilities, the Weather Service efficiently interacts with the Config and Web Server/Router Services. This design ensures each service focuses on its core functionality while contributing to the application's overall capabilities.
+
+
+### What I would do if this wasn't a coding exercise
+
+If I were to create this application for myself, I would have opted to use my own micro-framework
+([Service Mesh](https://github.com/gravestench/servicemesh)). It takes a similar approach in
+terms of project organization and modularity.
 
 ## Running the Example Application
 
