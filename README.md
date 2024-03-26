@@ -63,3 +63,10 @@ The output of the `weather/current/describe` endpoint yields a response like thi
 ```text
 "It's cool, feels colder than it actually is, and dry, with clear skies."
 ```
+
+## Bonus
+There's also an api route defined by the config manager:
+* `http://localhost:8080/config/paths`
+
+This was just added to show how easily it is to add other services to the API of our example app. 
+This route just prints the filepaths of the config files. 
